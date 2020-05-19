@@ -90,7 +90,7 @@ class Test3(Graphics):
 
     def setup(self):
         self.points = []
-        for i in range(50):
+        for i in range(500):
             px = random.randint(5, WINDOW_WIDTH - 5)
             py = random.randint(5, WINDOW_HEIGHT - 5)
             p = Vehicle(Vector2(px, py), Vector2(0, 0))
