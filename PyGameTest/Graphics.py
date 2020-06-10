@@ -79,7 +79,7 @@ class Graphics(ABC):
     BLUE = [0, 0, 255]
     GRAY = [200, 200, 200]
 
-    def __init__(self, title, width, height):
+    def __init__(self, title: str, width: int, height: int):
         self.screen = None
         self.clock = None
         self.textPrint = None
@@ -90,10 +90,11 @@ class Graphics(ABC):
         self.timeDelta = 0
         self.clearColor = Graphics.BLACK
         self.targetFps = 60
+        self.renderFps = True
 
         self.init(title, width, height)
 
-    def init(self, title, width, height):
+    def init(self, title: str, width: int, height: int):
 
         if pygame == None:
             return
@@ -113,15 +114,18 @@ class Graphics(ABC):
     def setClearColor(self, color):
         self.clearColor = color
 
-    def setTargetFps(self, fps):
+    def setTargetFps(self, fps: int):
         self.targetFps = fps
 
+    def showFps(self, flag: bool):
+        self.renderFps = flag
+
     @abstractmethod
-    def mouseEvent(self, x, y):
+    def mouseEvent(self, x: int, y: int):
         pass
 
     @abstractmethod
-    def keyEvent(self, key):
+    def keyEvent(self, key: str):
         pass
 
     @abstractmethod
@@ -151,7 +155,10 @@ class Graphics(ABC):
 
             # Set the screen background
             self.fill(self.clearColor)
-            self.print(f"{self.fps():.2f}")
+
+            # Show FPS in top eft corner
+            if self.renderFps:
+                self.print(f"{self.fps():.2f}")
     
             # Do physics
             self.update(self.timeDelta)
@@ -196,7 +203,7 @@ class Graphics(ABC):
             return 0
         return self.clock.get_fps()
     
-    def print(self, value):
+    def print(self, value: str):
         if pygame == None or self.disabled:
             return
         self.textPrint.print(self.screen, value, Graphics.WHITE)
