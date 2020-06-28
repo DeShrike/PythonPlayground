@@ -1,6 +1,17 @@
-import myModule
+import HelloC
 
-# copy myModule_cpython....so to workfolder
+HelloC.helloworld()
 
-print(myModule.fib(10))
-print(myModule.version())
+som = HelloC.add(13, 29)
+
+print(som)
+
+HelloC.simple_print("String One", "This is string two")
+
+HelloC.print_complex(42 + 3.1415926j)
+
+num = 40
+
+print(f"Fibo({num}) = {HelloC.fib(num)}")
+print(HelloC.version())
+

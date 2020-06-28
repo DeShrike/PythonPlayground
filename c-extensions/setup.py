@@ -1,15 +1,14 @@
 from distutils.core import setup, Extension
 
-module = Extension("myModule", sources = ["myModule.c"])
-setup(name="PackageName",
-      version="1.0",
-      description="This is a package for MyModule",
-      ext_modules = [module])
+# Install the HelloC module
+# Uaage:
+#    sudo python3.8 setup.py build
+#    sudo python3.8 setup.py install
 
+module = Extension("HelloC", sources = ["helloc.c"])
 
-
-# to setup run:
-# python3 setup.py build
-# or
-# python3 setup.py install
+setup(name = "HelloC",
+      version = "1.0",
+      description = "This module contains C extensions",
+      ext_modules = [module] )
 
